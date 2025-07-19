@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                 <li><a href="#contact">Contact</a></li>
+                 <li><a href="#">Portfolio</a></li>
+ 
+            </ul>
+        </nav>
+        <div class="header_text">
+            <!-- <p>Software Engineere</p> -->
+            <h1>Hi, I'm <span>Garima</span> Pathak</h1>
+        </div>
+    </div>
+    </div>
+    <!--              about             -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about_col1">
+                    <!-- <img src="img/img1.jpg" alt=""> --> 
+               </div> 
+                <div class="about_col2">
+                    <h1 class="subtitle">About Me</h1>
+                    <p> My name is Garima Pathak. I am a passionate and driven computer science student with a keen interest in building websites,solving algorithms.
+                        <br>I am currently learning and working with technologies like C++, Python ,HTML, CSS, JavaScript and React.I love solving problems and continuously improving my skills.
+                        <br>
+                    </p>
+                    <div class="tab_title">
+                        <p class="tab_skills active_link" onclick="opentab('skills')">Skills</p>
+                        <!-- <p class="tab_skills">Exp/ereince</p> -->
+                        <p class="tab_skills" onclick="opentab('education')">Education</p>
+                        <!-- <p class="tab_skills">Skills</p> -->
+                    </div>
+                    <div class="tab_contents active_tab " id="skills">
+                        <ul>
+                            <li><span>Web Development</span> <br>HTML <br>CSS <br>JavaScript <br>React</li>
+                            <li><span>Programming Language </span><br>C++ <br>Python</li>
+                        </ul>
+                    </div>
+                    <div class="tab_contents " id="education">
+                        <ul>
+                            <li><span>2022-Present</span> <br>B.tech from BBD University</li>
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!-- ----------------------CONTACT -------------------------->
+ <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact_left">
+                <h1 class="sub_title">Contact Me</h1>
+                <p> <i class="fa-solid fa-envelope"></i>pathakgarima866@gmail.com</p>
+                <p> <i class="fa-solid fa-phone"></i>7458062191</p>
+              
+                <button type="button" class="btn"><a href="cover/garima_pathak_resume.pdf" download>Download CV</a></button>
+
+            </div>
+            
+            <div class="contact_right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" id="" placeholder="Your Name" required>
+                    <input type="email" name="Email" id="" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+                <br>
+                <span id="msg"></span>
+                
+            </div>
+
+        </div>
+
+    
+    </div>
+  <script>
+    let tablinks=document.getElementsByClassName('tab_skills')
+    let tabcontents=document.getElementsByClassName('tab_contents')
+    function opentab(tabName){
+        for(tablink of tablinks){
+         tablink.classList.remove('active_link')
+}
+
+     for(tabcontent of tabcontents){
+         tabcontent.classList.remove('active_tab')
+    }
+         event.currentTarget.classList.add('active_link')
+         document.getElementById(tabName).classList.add('active_tab')
+
+    }
+    
+  </script>
+  <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzUVOsWvfEgEKy34kDthZtv_V-F0WWQWNr1xofMstlr3n4iHFzWwf2DwbFV9M_pr3H8/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg=document.getElementById('msg')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML="Message sent successfully"
+        setTimeout(function(){
+            msg.innerHTML=" "
+        },5000)
+        form.reset();
+
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+     <script src="https://kit.fontawesome.com/0786be11bd.js" crossorigin="anonymous"></script>
+</body>
+</html>
